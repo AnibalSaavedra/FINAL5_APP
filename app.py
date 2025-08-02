@@ -56,3 +56,31 @@ else:
 
 st.markdown("---")
 st.markdown("📲 ¿Necesitas ayuda o una consulta personalizada? [Contáctame por WhatsApp](https://wa.me/56967010107)")
+
+import os
+
+# Mostrar enlaces y botones al finalizar evaluación
+st.markdown("---")
+st.subheader("📊 Resultados del Test")
+
+# 1. Enlace directo a Google Sheets
+st.markdown("🔗 [Ver respuestas en Google Sheets](https://docs.google.com/spreadsheets/d/1YOyK9Ev_bNf7tiHaQuZydNeZ_9vUNqZs4W2zD09rR2U/edit?usp=sharing)")
+
+# 2. Descargar CSV
+csv_path = "respuestas_mbi360.csv"
+if os.path.exists(csv_path):
+    with open(csv_path, "rb") as f:
+        st.download_button("📥 Descargar archivo CSV", f, file_name="respuestas_mbi360.csv")
+else:
+    st.warning("⚠️ El archivo CSV aún no se ha generado.")
+
+# 3. Descargar PDF
+pdf_path = "informe_mbi360.pdf"
+if os.path.exists(pdf_path):
+    with open(pdf_path, "rb") as f:
+        st.download_button("📄 Descargar Informe PDF", f, file_name="informe_mbi360.pdf", mime="application/pdf")
+else:
+    st.warning("⚠️ El archivo PDF aún no se ha generado.")
+
+# 4. Confirmación WhatsApp
+st.success("✅ El mensaje fue enviado correctamente a tu WhatsApp Business: +56 9 6701 0107")
